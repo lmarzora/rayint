@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <atomic>
 #include <thread>
-
+#include <array>
 #include <math/vector.h>
 
 #include "primitives.h"

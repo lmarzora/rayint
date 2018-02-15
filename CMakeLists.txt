@@ -30,18 +30,27 @@ endif()
 if(NOT COMPILER_SUPPORTS_CXX11)
     message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
-    
+
+#set(MVE_INCLUDE "include" CACHE "MVE_INCLUDE" "")
+#set(CGAL_INCLUDE_DIR "include" CACHE "CGAL_INCLUDE_DIR" "")
+find_path(MVE_INCLUDE_PATH NAMES MVE/include)
 find_package(PNG REQUIRED)
 find_package(JPEG REQUIRED)
 find_package(TIFF REQUIRED)
+find_library(MVE_LIB REQUIRED)
+find_library(MVE_UTIL_LIB REQUIRED)
 
-add_subdirectory(elibs)
 
-include_directories(SYSTEM ${CMAKE_SOURCE_DIR}/elibs/mve/libs/)
-link_directories(
-    ${CMAKE_SOURCE_DIR}/elibs/mve/libs/mve
-    ${CMAKE_SOURCE_DIR}/elibs/mve/libs/util
-)
+
+message(${MVE_LIB})
+message(${MVE_INCLUDE_PATH})
+#add_subdirectory(elibs)
+
+#include_directories(SYSTEM ${CMAKE_SOURCE_DIR}/elibs/mve/libs/)
+#link_directories(
+#    ${CMAKE_SOURCE_DIR}/elibs/mve/libs/mve
+#    ${CMAKE_SOURCE_DIR}/elibs/mve/libs/util
+#)
 
 include_directories(libs)
 
